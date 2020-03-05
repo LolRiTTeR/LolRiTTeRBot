@@ -31,6 +31,15 @@ class ErrorHandler(commands.Cog):
         elif isinstance(error, commands.MissingRequiredArgument):
             return await ctx.send(f'`{ctx.command}` requires an argument')
 
+        elif isinstance(error, commands.BotMissingPermissions):
+            return await ctx.send(str(error))
+
+        elif isinstance(error, commands.NotOwner):
+            return await ctx.send(str(error))
+
+        elif isinstance(error):
+            return await ctx.send(str(error))
+
         print('Exception in command {}:'.format(ctx.command), file=sys.stderr)
         traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 

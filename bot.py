@@ -21,9 +21,6 @@ class RitterBot(commands.AutoShardedBot):
 			'errors'
 		]
 
-		if not self.config['use_default_help']:
-			self.remove_command('help')
-
 		super().__init__(
 			command_prefix=self.config['prefix'],
 			activity=discord.Game(name=self.config['startup_status']), **options
@@ -57,6 +54,8 @@ class RitterBot(commands.AutoShardedBot):
 
 bot = RitterBot(max_messages=10000)
 
+if not bot.config['use_default_help']:
+	bot.remove_command('help')
 
 @bot.event
 async def on_ready():

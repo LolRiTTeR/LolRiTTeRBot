@@ -8,7 +8,6 @@ class Stats(commands.Cog):
 
     @commands.command(name='stats')
     @commands.cooldown(1, 3, commands.BucketType.user)
-    @commands.bot_has_permissions(manage_messages=True)
     async def stats(self, ctx):
         e = discord.Embed(title="Title", description="Description", color=0xFF00FF)
         e.add_field(name="Field 1", value="Hello!", inline=False)

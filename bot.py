@@ -15,10 +15,9 @@ class RitterBot(commands.AutoShardedBot):
 			self.token = json.load(f)  # type: dict
 		self.login_errors = []
 		self.initial_extensions = [
-			'example',
-			'stats',
 			'main',
-			'errors'
+			'errors',
+			'stats'
 		]
 
 		super().__init__(

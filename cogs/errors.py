@@ -37,7 +37,7 @@ class ErrorHandler(commands.Cog):
         elif isinstance(error, commands.NotOwner):
             return await ctx.send(str(error))
 
-        elif isinstance(error):
+        else:
             return await ctx.send(str(error))
 
         print('Exception in command {}:'.format(ctx.command), file=sys.stderr)

@@ -13,7 +13,7 @@ class Main(commands.Cog):
         except commands.ExtensionError as e:
             await ctx.send(f'{e.__class__.__name__}: {e}')
         else:
-            await ctx.send(f'Reloaded cog: {module}')
+            await ctx.send(f'Reloaded cog: `{module}`')
 
     @commands.command(name='load')
     @commands.is_owner()
@@ -23,7 +23,7 @@ class Main(commands.Cog):
         except commands.ExtensionError as e:
             await ctx.send(f'{e.__class__.__name__}: {e}')
         else:
-            await ctx.send(f'Loaded cog: {module}')
+            await ctx.send(f'Loaded cog: `{module}`')
 
     @commands.command(name='unload')
     @commands.is_owner()
@@ -33,7 +33,7 @@ class Main(commands.Cog):
         except commands.ExtensionError as e:
             await ctx.send(f'{e.__class__.__name__}: {e}')
         else:
-            await ctx.send(f'Unloaded cog: {module}')
+            await ctx.send(f'Unloaded cog: `{module}`')
 
 
 def setup(bot):

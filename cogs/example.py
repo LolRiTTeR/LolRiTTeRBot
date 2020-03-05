@@ -24,6 +24,7 @@ class Example(commands.Cog):
         pass
 
     @commands.command(name='test')
+    @commands.guild_only()
     async def test(self, ctx):
         await ctx.send('Working :]')
 

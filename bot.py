@@ -17,7 +17,8 @@ class RitterBot(commands.AutoShardedBot):
 		self.initial_extensions = [
 			'example',
 			'stats',
-			'main'
+			'main',
+			'errors'
 		]
 
 		if not self.config['use_default_help']:

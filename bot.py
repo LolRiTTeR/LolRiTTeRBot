@@ -17,6 +17,7 @@ class RitterBot(commands.AutoShardedBot):
 		self.initial_extensions = [
 			'main',
 			'errors',
+			'help',
 			'stats'
 		]
 
@@ -24,6 +25,9 @@ class RitterBot(commands.AutoShardedBot):
 			command_prefix=self.config['prefix'],
 			activity=discord.Game(name=self.config['startup_status']), **options
 		)
+
+	def __repr__(self):
+		return "a"
 
 	def load(self, *extensions):
 		for cog in extensions:

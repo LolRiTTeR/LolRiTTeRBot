@@ -2,7 +2,7 @@ from discord.ext import commands
 import discord
 
 
-class Stats(commands.Cog):
+class Stats(commands.Cog, name='stats'):
     def __init__(self, bot):
         self.bot = bot
 

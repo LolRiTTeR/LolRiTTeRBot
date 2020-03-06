@@ -20,14 +20,11 @@ def insert_returns(body):
         insert_returns(body[-1].body)
 
 
-class Main(commands.Cog, name='Main Cog'):
+class Main(commands.Cog, name='main'):
     def __init__(self, bot):
         self.bot = bot
 
-    def __repr__(self):
-        return "a"
-
-    @commands.command(name='reload')
+    @commands.command(name='reload', description='Reloads cogs')
     @commands.is_owner()
     async def _reload(self, ctx, *, module):
         try:
@@ -107,6 +104,7 @@ class Main(commands.Cog, name='Main Cog'):
         try:
             result = (await eval(f"{fn_name}()", env))
             await ctx.send(result)
+            print(result)
         except AttributeError as e:
             await ctx.send(e)
 

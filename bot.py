@@ -26,9 +26,6 @@ class RitterBot(commands.AutoShardedBot):
 			activity=discord.Game(name=self.config['startup_status']), **options
 		)
 
-	def __repr__(self):
-		return "a"
-
 	def load(self, *extensions):
 		for cog in extensions:
 			try:
@@ -49,6 +46,8 @@ class RitterBot(commands.AutoShardedBot):
 				print(f"Couldn't find {cog}")
 			except commands.ExtensionError:
 				self.login_errors.append(f"Ignoring exception in Cog: {cog}\n{traceback.format_exc()}")
+
+
 
 	def run(self):
 		self.load_initial_extensions()

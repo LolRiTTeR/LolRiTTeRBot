@@ -34,7 +34,7 @@ class Main(commands.Cog, name='main'):
         else:
             await ctx.send(f'Reloaded cog: `{module}`')
 
-    @commands.command(name='load')
+    @commands.command(name='load', description='Loads cogs')
     @commands.is_owner()
     async def load(self, ctx, *, module):
         try:
@@ -44,7 +44,7 @@ class Main(commands.Cog, name='main'):
         else:
             await ctx.send(f'Loaded cog: `{module}`')
 
-    @commands.command(name='unload')
+    @commands.command(name='unload', description='Unloads cogs')
     @commands.is_owner()
     async def unload(self, ctx, *, module):
         try:
@@ -54,7 +54,7 @@ class Main(commands.Cog, name='main'):
         else:
             await ctx.send(f'Unloaded cog: `{module}`')
 
-    @commands.command(name='eval')
+    @commands.command(name='eval', description='Eval commands')
     @commands.is_owner()
     async def eval_fn(self, ctx, *, cmd):
         """https://gist.github.com/nitros12/2c3c265813121492655bc95aa54da6b9

@@ -13,9 +13,13 @@ class ErrorHandler(commands.Cog, name='errors'):
         if hasattr(ctx.command, 'on_error'):
             return
 
+        ignore = commands.CommandNotFound
         error = getattr(error, 'original', error)
 
-        if isinstance (error, commands.DisabledCommand):
+        if isinstance(error, ignore):
+            return
+
+        elif isinstance (error, commands.DisabledCommand):
             return await ctx.send(f'`{ctx.command}` has been disabled.')
 
         elif isinstance(error, commands.NoPrivateMessage):

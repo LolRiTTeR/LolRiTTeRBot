@@ -8,18 +8,20 @@ class Help(commands.Cog, name='help'):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name='help2', description='I want to see this description somewhere')
+    @commands.command(name='help', hidden=True)
     @commands.bot_has_permissions(embed_links=True)
     async def help(self, ctx):
         embed = discord.Embed(title='Command list')
-        names = ''
-        descriptions = ''
+        local_commands = ''
+        local_description = ''
         for cmd in self.bot.walk_commands():
-            if cmd.description:
-                names += f'{cmd.name}\n'
-                descriptions += f'{cmd.description}\n'
-        embed.add_field(name='\u200b', value=names, inline=True)
-        embed.add_field(name='\u200b', value=descriptions, inline=True)
+            if cmd.aliases:
+                continue
+            if not cmd.hidden:
+                local_commands += f'{cmd.name}\n'
+                local_description += f'{cmd.description}\n'
+        embed.add_field(name='Command', value=local_commands, inline=True)
+        embed.add_field(name='Description', value=local_description, inline=True)
         embed.set_footer(text='LolRiTTeRBot', icon_url=self.bot.user.avatar_url)
         embed.timestamp = datetime.datetime.utcnow()
         await ctx.send(embed=embed)

@@ -6,7 +6,7 @@ class Stats(commands.Cog, name='stats'):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name='stats')
+    @commands.command(name='stats', description='Displays various statistics', aliases=['kd', 'k/d'])
     @commands.cooldown(1, 3, commands.BucketType.user)
     async def stats(self, ctx):
         e = discord.Embed(title="Title", description="Description", color=0xFF00FF)

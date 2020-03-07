@@ -1,5 +1,5 @@
 {
   "prefix": "-",
-  "use_default_help": true,
+  "use_default_help": false,
   "startup_status": "Up and Running"
 }

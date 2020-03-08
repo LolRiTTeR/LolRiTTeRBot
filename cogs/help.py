@@ -15,11 +15,13 @@ class Help(commands.Cog, name='help'):
         local_commands = ''
         local_description = ''
         for cmd in self.bot.walk_commands():
-            if cmd.aliases:
-                continue
-            if not cmd.hidden:
-                local_commands += f'{cmd.name}\n'
-                local_description += f'{cmd.description}\n'
+            if not cmd.hidden and cmd.name not in local_commands:
+                local_commands += f'`-{cmd.name}`\n'
+                local_description += f'`{cmd.description}`\n'
+                if cmd.aliases:
+                    for alias in cmd.aliases:
+                        local_commands += f'`-{alias}`\n'
+                        local_description += f'`Alias of {cmd.name}`\n'
         embed.add_field(name='Command', value=local_commands, inline=True)
         embed.add_field(name='Description', value=local_description, inline=True)
         embed.set_footer(text='LolRiTTeRBot', icon_url=self.bot.user.avatar_url)

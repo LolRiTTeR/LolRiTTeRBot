@@ -12,20 +12,19 @@ class Help(commands.Cog, name='help'):
     @commands.bot_has_permissions(embed_links=True)
     async def help(self, ctx):
         embed = discord.Embed(title='Command list')
-        local_commands = ''
-        local_description = ''
+        local_commands = []
+        local_description = []
         for cmd in self.bot.walk_commands():
-            if not cmd.hidden and cmd.name not in local_commands:
-                local_commands += f'`-{cmd.name}`'
-                local_description += f'`{cmd.description}`\n'
+            if not cmd.hidden and cmd.name not in str(local_commands):
+                temp = f'{cmd.name}'
                 if cmd.aliases:
                     for alias in cmd.aliases:
-                        local_commands += f', `-{alias}`'
-                    local_commands += '\n'
-                else:
-                    local_commands += '\n'
-        embed.add_field(name='Command', value=local_commands, inline=True)
-        embed.add_field(name='Description', value=local_description, inline=True)
+                        temp += f', {alias}'
+                local_commands.append(f'`{temp}`')
+                local_description.append(f'`{cmd.description}`')
+        local_commands, local_description = zip(*sorted(zip(local_commands, local_description)))
+        embed.add_field(name='Command', value="\n".join(local_commands), inline=True)
+        embed.add_field(name='Description', value="\n".join(local_description), inline=True)
         embed.set_footer(text='LolRiTTeRBot', icon_url=self.bot.user.avatar_url)
         embed.timestamp = datetime.datetime.utcnow()
         await ctx.send(embed=embed)

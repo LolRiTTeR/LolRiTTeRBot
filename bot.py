@@ -18,7 +18,8 @@ class RitterBot(commands.AutoShardedBot):
 			'main',
 			'errors',
 			'help',
-			'stats'
+			'stats',
+			'fun'
 		]
 
 		super().__init__(

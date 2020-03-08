@@ -8,9 +8,9 @@ class Stats(commands.Cog, name='stats'):
 
     @commands.command(name='stats', description='Displays various statistics', aliases=['kd', 'k/d'])
     @commands.cooldown(1, 3, commands.BucketType.user)
-    async def stats(self, ctx):
+    async def stats(self, ctx, *args):
         e = discord.Embed(title="Title", description="Description", color=0xFF00FF)
-        e.add_field(name="Field 1", value="Hello!", inline=False)
+        e.add_field(name="Field 1", value='Amount: {} - Content: {}'.format(len(args), " ".join(args)), inline=False)
         e.set_footer(text="This is a cool footer")
         await ctx.send(embed=e)
 

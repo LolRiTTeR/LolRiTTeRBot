@@ -47,8 +47,6 @@ class RitterBot(commands.AutoShardedBot):
 			except commands.ExtensionError:
 				self.login_errors.append(f"Ignoring exception in Cog: {cog}\n{traceback.format_exc()}")
 
-
-
 	def run(self):
 		self.load_initial_extensions()
 		super().run(self.token["token"])
@@ -58,6 +56,7 @@ bot = RitterBot(max_messages=10000)
 
 if not bot.config['use_default_help']:
 	bot.remove_command('help')
+
 
 @bot.event
 async def on_ready():

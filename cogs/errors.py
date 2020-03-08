@@ -41,6 +41,9 @@ class ErrorHandler(commands.Cog, name='errors'):
         elif isinstance(error, commands.NotOwner):
             return await ctx.send(error)
 
+        elif isinstance(error, commands.CommandOnCooldown):
+            return await ctx.send(error)
+
         else:
             try:
                 await ctx.send(error)
